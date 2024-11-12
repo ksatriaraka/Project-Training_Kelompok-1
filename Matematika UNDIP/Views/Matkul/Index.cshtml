@@ -1,0 +1,25 @@
+﻿@model List<Matkul>
+
+<h2>LIST MATA KULIAH</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kode</th>
+            <th>Nama Mata Kuliah</th>
+            <th>Dosen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var matkul in Model)
+        {
+            <tr>
+                <td>@matkul.Kode</td>
+                <td>@matkul.NamaMataKuliah</td>
+                <td>
+                    @Html.ActionLink("ListDosen", "ListDosen", new { kode = matkul.Kode })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

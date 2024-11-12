@@ -1,0 +1,84 @@
+﻿@model Matkul
+@{
+    ViewData["Title"] = "LIST DOSEN";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">LIST DOSEN</h2>
+
+    <div class="mb-4">
+        <hr class="border-primary" />
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <table class="details-table">
+                <tr>
+                    <td style="width: 140px;">Kode Mata Kuliah</td>
+                    <td style="width: 15px;">:</td>
+                    <td>@Model.Kode</td>
+                </tr>
+                <tr>
+                    <td>Nama Mata Kuliah</td>
+                    <td>:</td>
+                    <td>@Model.NamaMataKuliah</td>
+                </tr>
+                <tr style="vertical-align: top;">
+                    <td>Dosen Pengampu</td>
+                    <td>:</td>
+                    <td>
+                        @if (Model.DosenPengampu != null && Model.DosenPengampu.Any())
+                        {
+                            foreach (var dosen in Model.DosenPengampu)
+                            {
+                                @dosen.Name <br />
+                            }
+                        }
+                        else
+                        {
+                            <span>Tidak ada dosen pengampu</span>
+                        }
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="@Url.Action("Index")" class="btn btn-secondary btn-sm">Back</a>
+    </div>
+</div>
+
+<style>
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .border-primary {
+        border: none;
+        height: 2px;
+        background-color: #0d6efd;
+    }
+
+    .details-table {
+        border-collapse: separate;
+        border-spacing: 0 8px;
+    }
+
+        .details-table td {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        padding: 6px 20px;
+        font-size: 14px;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+</style>
